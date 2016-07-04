@@ -1,0 +1,78 @@
+<datatable-demos></datatable-demos>
+
+<div class="ContentSideSections">
+  <div class="Content100 overHidden TextShadow">
+    <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">PrimeNG Test</span>
+  </div>
+</div>
+
+<div class="ContentSideSections Implementation">
+  <p-dataTable (onRowSelect)="onRowSelect($event)" [(selection)]="selectedClaim" [paginator]="true" [responsive]="true" [rows]="10" [value]="claims" selectionMode="single">
+    <header>CRUD for Claims</header>
+    <p-column [sortable]="true" field="first_name" header="First Name"></p-column>
+    <p-column [sortable]="true" field="last_name" header="Last Name"></p-column>
+    <p-column [sortable]="true" field="event_date" header="Event Date"></p-column>
+    <p-column [sortable]="true" field="attendees" header="# of Attendees"></p-column>
+    <p-column [sortable]="true" field="company_name" header="Company Name"></p-column>
+    <p-column [sortable]="true" field="company_address" header="Company Address"></p-column>
+    <p-column [sortable]="true" field="company_industry" header="Company Industry"></p-column>
+    <footer>
+      <div class="ui-helper-clearfix" style="width:100%">
+        <button (click)="showDialogToAdd()" icon="fa-plus" label="Add" pButton style="float:left" type="button"></button>
+      </div>
+    </footer>
+  </p-dataTable>
+
+  <p-dialog [(visible)]="displayDialog" [modal]="true" [responsive]="true" header="Claim Details" showEffect="fade">
+    <div *ngIf="claim" class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="ui-grid-col-8"><input [(ngModel)]="claim.first_name" id="first_name" pInputText/></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="last_name">Last Name</label>
+        </div>
+        <div class="ui-grid-col-8"><input [(ngModel)]="claim.last_name" id="last_name" pInputText/></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="event_date">Event Date</label>
+        </div>
+        <div class="ui-grid-col-8"><input [(ngModel)]="claim.event_date" id="event_date" pInputText/></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="attendees"># of Attendees</label>
+        </div>
+        <div class="ui-grid-col-8"><input [(ngModel)]="claim.attendees" id="attendees" pInputText/></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="company_name">Company Name</label>
+        </div>
+        <div class="ui-grid-col-8"><input [(ngModel)]="claim.company_name" id="company_name" pInputText/></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="company_address">Company Address</label>
+        </div>
+        <div class="ui-grid-col-8"><input [(ngModel)]="claim.company_address" id="company_address" pInputText/></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="company_industry">Company Industry</label>
+        </div>
+        <div class="ui-grid-col-8"><input [(ngModel)]="claim.company_industry" id="company_industry" pInputText/></div>
+      </div>
+    </div>
+    <footer>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <button (click)="delete()" icon="fa-close" label="Delete" pButton type="button"></button>
+        <button (click)="save()" icon="fa-check" label="Save" pButton type="button"></button>
+      </div>
+    </footer>
+  </p-dialog>
+</div>
